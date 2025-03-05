@@ -3,15 +3,54 @@ from discord.ext import commands
 import aiohttp
 import asyncio
 
-# 請將以下變數依實際狀況調整
-DISCORD_TOKEN = "YOUR_DISCORD_BOT_TOKEN"
+# 請依照實際狀況調整
+DISCORD_TOKEN = ""
 API_BASE_URL = "http://localhost:8063"  # API 主機與埠號
 
-# 建立 Discord Bot（依需求調整 intents）
+# 允許 bot 發言的頻道 ID
+ALLOWED_CHANNELS = [1338000000027708458, 1214584100000405954]  # 請填入允許的頻道 ID
+
+# 建立 Discord Bot（注意需開啟 message_content 權限）
 intents = discord.Intents.default()
+intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+# 檢查器：只允許在特定頻道或私訊中使用
+def is_allowed_channel():
+    async def predicate(ctx):
+        # 若是在私訊，ctx.guild 為 None，直接允許
+        if ctx.guild is None:
+            return True
+        # 若在公會，檢查頻道 ID 是否在允許清單中
+        return ctx.channel.id in ALLOWED_CHANNELS
+    return commands.check(predicate)
+
+@bot.event
+async def on_ready():
+    print(f"已成功登入：{bot.user} (ID: {bot.user.id})")
+    # 嘗試向每個指定頻道發送通知訊息
+    for channel_id in ALLOWED_CHANNELS:
+        channel = bot.get_channel(channel_id)
+        if channel is not None:
+            try:
+                await channel.send("機器人已啟動並進入運作中！")
+                print(f"已在頻道 {channel.name} (ID: {channel.id}) 發送啟動通知。")
+            except Exception as e:
+                print(f"發送訊息到頻道 ID {channel_id} 時出錯：{e}")
+        else:
+            print(f"找不到頻道 ID：{channel_id}")
+
+@bot.event
+async def on_command_error(ctx, error):
+    # 若因檢查失敗而拒絕命令，回覆錯誤訊息
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("此頻道不允許使用此命令，請至指定頻道或透過私訊使用。")
+    else:
+        # 其他錯誤仍由預設錯誤處理機制處理
+        raise error
+
 @bot.command()
+@is_allowed_channel()
 async def chat(ctx, *, user_message: str):
     """
     使用 !chat 指令將使用者訊息轉發給 API，並將回應結果送回 Discord。
@@ -48,6 +87,7 @@ async def chat(ctx, *, user_message: str):
             await ctx.send(f"發生錯誤：{str(e)}")
 
 @bot.command()
+@is_allowed_channel()
 async def reset(ctx):
     """
     使用 !reset 指令請求 API 重置對話記憶。
