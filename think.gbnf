@@ -1,0 +1,3 @@
+root ::= "<think>" cot "</think>" response
+cot ::= [^<]+
+response ::= .*
