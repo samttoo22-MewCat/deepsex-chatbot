@@ -1,5 +1,5 @@
 # docker build -t llama_cpp .
-# sudo docker run --gpus all -it -p 8062:8062 -v .:/app llama_cpp /bin/bash
+# sudo docker run --gpus all -it -p 8063:8063 -v .:/app llama_cpp /bin/bash
 # this is for llama-cpp-python gpu install
 ARG CUDA_IMAGE="12.1.1-devel-ubuntu22.04"
 FROM nvidia/cuda:${CUDA_IMAGE}
