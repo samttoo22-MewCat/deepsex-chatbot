@@ -44,10 +44,6 @@
 
 本專案的 FastAPI 伺服器在 http://localhost:8063 提供了一個 `/chat` 端點，允許用戶與模型互動。
 
-### **POST /chat**
-
-- **請求參數（JSON 格式）：**
-
 ## API 說明
 
 ### **POST /chat**
