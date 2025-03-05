@@ -42,7 +42,7 @@
 --------
 ## API 與 Discord機器人 使用方式
 
-本專案的 FastAPI 伺服器提供了一個 `/chat` 端點，允許與 Llama 模型互動。
+本專案的 FastAPI 伺服器在 http://localhost:8063 提供了一個 `/chat` 端點，允許用戶與模型互動。
 
 ### **POST /chat**
 
