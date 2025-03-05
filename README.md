@@ -2,10 +2,12 @@
 
 以 ValueFX9507/Tifa-DeepsexV2-7b-MGRPO 系列模型為基底，專注於色情角色扮演的AI對談機器人。，<br>
 有API與Discord BOT兩種形式。
+優點是文筆和場景描述很不錯，但記憶不長。
 
 ## 主要功能
 
 - **與 Tifa-DeepsexV2-7b-MGRPO 模型交互**：使用 Tifa-DeepsexV2-7b-MGRPO 模型來生成回應。
+- **文法檔案增加模型的正確輸出**：使用llama_cpp的文法設定增加模型正確回答的機率。
 - **上下文記憶**：會根據 `conversation_id` 保留最近的幾次對話。
 - **支援簡繁轉換**：透過 OpenCC 將簡體字轉為繁體字。
 - **Discord Bot 整合**：能夠在指定頻道內回應訊息。
