@@ -29,7 +29,7 @@
     sudo docker run --gpus all -it -p 8063:8063 -v .:/app llama_cpp /bin/bash
     ```
 
-3. 執行API伺服器：
+3. 執行API伺服器（可以調整GPU使用量以及模型名稱）：
     ```bash
     cd ..
     python guff_server.py
