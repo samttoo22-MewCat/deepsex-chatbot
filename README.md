@@ -14,6 +14,8 @@
 - **重置上下文**：使用者可輸入 `reset` 來清空當前對話的記錄。
 
 ## 安裝與使用
+請先在 [這裡下載](https://huggingface.co/collections/ValueFX9507/tifa-deepsexv2-mgrpo-67b0f0e99d15e90f2cfed096) 你需要的模型，建議Q8以上。
+在複製專案後將該模型檔案放入此專案資料夾底下，並且在gguf_server.py中把模型檔名改好。
 
 1. 複製專案：
     ```bash
