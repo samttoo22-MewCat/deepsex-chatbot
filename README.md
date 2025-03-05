@@ -64,9 +64,10 @@
 | `top_p` | `float` | `0.6` | 控制語言模型生成的多樣性 |
 | `repeat_penalty` | `float` | `1.3` | 避免模型重複生成相同句子 |
 | `character_name` | `str` | `"沫緋"` | 角色的名字 |
-| `character_description` | `str` | `預設角色描述` | 角色的詳細設定 |
+| `character_description` | `str` | `預設角色描述（沫緋）` | 角色的詳細描述 |
 | `user_name` | `str` | `"小翎"` | 使用者的名字 |
-| `user_description` | `str` | `預設使用者描述` | 使用者的詳細設定 |
+| `user_description` | `str` | `預設使用者描述（沫緋）` | 使用者的詳細描述 |
+| `place_description` | `str` | `預設地點描述（沫緋）` | 地點的詳細描述 |
 
 #### **回應範例**
 ```json
