@@ -32,12 +32,12 @@
 3. 執行API伺服器（可以調整GPU使用量以及模型名稱）：
     ```bash
     cd app
-    python guff_server.py
+    python3 guff_server.py
     ```
 
 3. 執行Discord BOT（可選，記得要換另一個終端）：
     ```bash
-    python DCbot.py
+    python3 DCbot.py
     ```
 --------
 ## API 與 Discord機器人 使用方式
