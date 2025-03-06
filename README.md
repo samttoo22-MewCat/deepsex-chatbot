@@ -35,7 +35,7 @@
     python guff_server.py
     ```
 
-3. 執行Discord BOT（可選）：
+3. 執行Discord BOT（可選，記得要換另一個終端）：
     ```bash
     python DCbot.py
     ```
