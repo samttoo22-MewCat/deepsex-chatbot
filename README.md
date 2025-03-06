@@ -31,7 +31,7 @@
 
 3. 執行API伺服器（可以調整GPU使用量以及模型名稱）：
     ```bash
-    cd ..
+    cd app
     python guff_server.py
     ```
 
